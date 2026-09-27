@@ -1,0 +1,22 @@
+{
+  "genes": ["g0", "g1", "g2", "g3"],
+  "samples": ["s1", "s2", "s3", "s4", "s5", "s6"],
+  "matrix": [
+    [10, 12, 11, 60, 62, 61],
+    [20, 22, 21, 20, 21, 22],
+    [100, 101, 99, 100, 100, 101],
+    [5, 6, 5, 30, 32, 31]
+  ],
+  "groups": [
+    {"name": "ctrl", "samples": ["s1", "s2", "s3"]},
+    {"name": "trt",  "samples": ["s4", "s5", "s6"]}
+  ],
+  "config": {
+    "normalization": "log_cpm",
+    "test": "welch",
+    "correction": "bh",
+    "alpha": 0.05,
+    "min_total_count": 1.0,
+    "timeout_seconds": 300
+  }
+}

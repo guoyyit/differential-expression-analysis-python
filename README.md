@@ -114,7 +114,7 @@ curl -s -X POST http://127.0.0.1:8000/api/v1/analyses \
 
 分析级配置见 `AnalysisConfig`（`normalization`、`test`、`correction`、
 `alpha`、`min_total_count`、`timeout_seconds`、`seed`）。每次任务的配置
-随快照回显回显，策略选择完全可追溯。
+随快照回显，策略选择完全可追溯。
 
 ## 测试
 
