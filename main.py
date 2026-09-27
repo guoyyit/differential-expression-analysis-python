@@ -1,8 +1,4 @@
-from fastapi import FastAPI
+"""Uvicorn entry point exposing the ASGI app."""
+from deapp.api import create_app
 
-app = FastAPI()
-
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+app = create_app()
