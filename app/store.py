@@ -106,6 +106,20 @@ class TaskStore:
 
     # -- guarded transitions ----------------------------------------------
 
+    def reset_for_recovery(self, task_id: str) -> None:
+        """Crash recovery: move PENDING/RUNNING back to a clean PENDING."""
+        with self._lock, self._conn:
+            self._conn.execute(
+                "UPDATE tasks SET status = ?, started_at = NULL "
+                "WHERE task_id = ? AND status IN (?, ?)",
+                (
+                    TaskStatus.PENDING.value,
+                    task_id,
+                    TaskStatus.PENDING.value,
+                    TaskStatus.RUNNING.value,
+                ),
+            )
+
     def mark_running(self, task_id: str) -> bool:
         """PENDING -> RUNNING. False if the task left PENDING meanwhile."""
         with self._lock, self._conn:
